@@ -8,7 +8,8 @@
 // new algorithm and reusing the interface code.
 #include "sort.hpp"
 
-int main() {
+int main()
+{
     using element_t = int;
 
     // Fetch a line from stdin
@@ -19,7 +20,8 @@ int main() {
     // Convert the retrieved line to an array of integers
     std::istringstream stream(line);
     std::vector<element_t> vector;
-    for (element_t i; stream >> i;) {
+    for (element_t i; stream >> i;)
+    {
         vector.push_back(i);
     }
 
@@ -28,7 +30,8 @@ int main() {
 
     // Output the sorted values
     std::cout << "The array is sorted: ";
-    for (auto i : vector) {
+    for (auto i : vector)
+    {
         std::cout << i << ' ';
     }
     std::cout << '\n';
