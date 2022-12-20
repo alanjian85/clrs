@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 
+// This sort.hpp will be directed to different header files when building
+// different CMake projects. This design provides some flexibility for adding
+// new algorithm and reusing the interface code.
 #include "sort.hpp"
 
 int main() {
