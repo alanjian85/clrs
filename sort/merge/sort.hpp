@@ -7,10 +7,14 @@ template <typename T>
 void merge(T& a, decltype(std::size(a)) p, decltype(std::size(a)) q,
            decltype(std::size(a)) r)
 {
+    // Compute the length of the interval [p, q] and [q + 1, r], and copy them
+    // into a local dynamically-allocated array
     auto nl = q - p + 1;
     auto nr = r - q;
     std::vector al(a.begin() + p, a.begin() + p + nl);
     std::vector ar(a.begin() + q + 1, a.begin() + q + 1 + nr);
+    // Pick the smaller value on the top of the two arrays and use queue
+    // head pointers i and j
     decltype(al.size()) i = 0, j = 0;
     while (i < nl && j < nr)
     {
@@ -26,6 +30,8 @@ void merge(T& a, decltype(std::size(a)) p, decltype(std::size(a)) q,
         }
         ++p;
     }
+    // Move the remaining elements in two arrays into the original array, if
+    // any
     for (; i < nl; ++i, ++p)
         a[p] = al[i];
     for (; j < nr; ++j, ++p)
