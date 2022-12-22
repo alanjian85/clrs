@@ -36,7 +36,13 @@ template <typename T>
 void sort(T& a, decltype(std::size(a)) p = 0, decltype(std::ssize(a)) r = -1)
 {
     if (r == -1)
-        r = std::ssize(a);
+        r = std::ssize(a) - 1;
+    if (p >= r)
+        return;
+    auto q = (p + r) >> 1;
+    sort(a, p, q);
+    sort(a, q + 1, r);
+    merge(a, p, q, r);
 }
 
 #endif // SORT_HPP
